@@ -1,2 +1,4 @@
 # FlyDi.jl
-fly dipoles through inhomogeneous electric fields
+fly dipoles through electric fields
+
+status: testing
