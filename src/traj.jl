@@ -198,7 +198,7 @@ function traj(fa::FastAdjust, voltages::Union{Function, Vector{Float64}},
     # output
     if df
         result = DataFrame(result)
-        names!(result, [:t, :x, :y, :z, :PE, :KE, :famp]);
+        names!(result, [:t, :x, :y, :z, :KE, :PE, :famp]);
     end
     return result
 end
