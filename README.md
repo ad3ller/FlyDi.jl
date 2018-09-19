@@ -1,4 +1,6 @@
 # FlyDi.jl
 fly dipoles through electric fields
 
-status: testing
+## Install
+
+    Pkg.clone("https://github.com/ad3ller/FlyDi.jl")
