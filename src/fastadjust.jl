@@ -197,7 +197,7 @@ function amp_field_g(fa::FastAdjust, voltages::Vector{Float64}, xg::Float64, yg:
     """ amplitude of the field at grid coord
     """
     ex, ey, ez = field_g(fa, voltages, xg, yg, zg)
-    return sqrt(ex^2.0 + ey^2.0 + + ez^2.0)
+    return sqrt(ex^2.0 + ey^2.0 + ez^2.0)
 end
 
 function grad_field_g(fa::FastAdjust2D, voltages::Vector{Float64}, xg::Float64, yg::Float64, zg::Float64)
