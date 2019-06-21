@@ -10,7 +10,7 @@ function mc_vel(num::Int64; v_s=1.95e3, delta_v=80.0, rho=2.5e-4, z=0.15, epsilo
         and with x/y eccentricity of epsilon.        
     """
     # longitudional beam velocity (Gaussian)
-    vz = abs.(v_s + randn(num) .* (delta_v / (2.0^0.5)))
+    vz = abs.(v_s .+ randn(num) .* (delta_v / (2.0^0.5)))
     # position at the laser
     r = rho .* rand(num).^0.5
     theta = 2.0 * pi * rand(num)
@@ -21,10 +21,10 @@ function mc_vel(num::Int64; v_s=1.95e3, delta_v=80.0, rho=2.5e-4, z=0.15, epsilo
     return Array([vx vy vz])
 end
 
-function mc_flat(num, xmin = 0.0, xmax = 5.0e-6)
+function mc_flat(num, xmin=0.0, xmax=5.0e-6)
     """ Random values, evenly sampled from xmin < x < xmax.        
     """
-    x = xmin + rand(num) * (xmax - xmin)
+    x = xmin .+ rand(num) .* (xmax - xmin)
     return x
 end
 
@@ -56,7 +56,7 @@ function mc_supersonic(num::Int64; tmin=0.0, tmax=5e-6, distance=0.2, z0=0., rev
     # time
     t =  mc_flat(num, tmin, tmax)
     # longitudional velocity
-    vz = abs.(v_s + randn(num) .* (delta_v / (2.0^0.5)))
+    vz = abs.(v_s .+ randn(num) .* (delta_v / (2.0^0.5)))
     tof = distance ./ vz
     x = randn(num) .* sigma_x
     y = randn(num) .* sigma_y

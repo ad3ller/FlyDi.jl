@@ -72,7 +72,7 @@ end
 function potential(fa::FastAdjust, voltages::Vector{Float64})
     """ electric potential for a set of voltages
     """
-    return squeeze(sum(fa.pa .* voltages, 1), 1)
+    return dropdims(sum(fa.pa .* voltages, dims=1), dims=1)
 end
 
 function grid_r(fa::FastAdjust2D, r::Vector{Float64})
@@ -131,7 +131,7 @@ function potential_g(fa::FastAdjust2D, voltages::Vector{Float64}, xg::Float64, y
         wx = xg - xn
         wy = yg - yn
         pa = fa.pa[:, yn: yn + 1, xn : xn + 1]
-        phi = squeeze(sum(pa .* voltages, 1), 1)
+        phi = dropdims(sum(pa .* voltages, dims=1), dims=1)
         result = (1.0 - wx) * (1.0 - wy) * phi[1, 1] + 
                  wx * (1.0 - wy) * phi[1, 2] + 
                  (1.0 - wx) * wy * phi[2, 1] +
@@ -151,7 +151,7 @@ function potential_g(fa::FastAdjust3D, voltages::Vector{Float64}, xg::Float64, y
         yn = Int64(floor(yg))
         zn = Int64(floor(zg))
         pa = fa.pa[:, zn: zn + 1, yn: yn + 1, xn : xn + 1]
-        phi = squeeze(sum(pa .* voltages, 1), 1)
+        phi = dropdims(sum(pa .* voltages, dims=1), dims=1)
         ## interpolate along x
         wx = (xg - xn)
         c00 = phi[1, 1, 1] * (1 - wx) .+ phi[1, 1, 2] * wx
