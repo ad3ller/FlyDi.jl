@@ -27,7 +27,7 @@ function flydi(fa::FastAdjust, voltages::Union{Function, Vector{Float64}},
     return result
 end
 
-function flydi_final(fa::FastAdjust, voltages::Union{Function, Vector{Float64}},
+function flydi_last(fa::FastAdjust, voltages::Union{Function, Vector{Float64}},
                      di::DataFrame,
                      dipole::Union{Float64, Function}, mass::Float64, dt::Float64, method::Function;
                      max_field::Float64=NaN, max_t::Float64=1.0, max_iterations::Int64=Int64(1e6))
