@@ -45,6 +45,6 @@ function flydi_last(fa::FastAdjust, voltages::Union{Function, Vector{Float64}},
                                  max_field=max_field, max_t=max_t, max_iterations=max_iterations)
     end
     result = DataFrame(result)
-    names!(result, [:t, :x, :y, :z, :vx, :vy, :vz]);
+    rename!(result, [:t, :x, :y, :z, :vx, :vy, :vz]);
     return result
 end

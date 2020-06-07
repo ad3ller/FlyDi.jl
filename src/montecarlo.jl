@@ -42,7 +42,7 @@ function mc_uniform(num::Int64; tmin=0.0, tmax=5e-6, distance=0.3, z0=0.198, rev
     vel[:, 3] = - vel[:, 3]
     end
     df = DataFrame(hcat(t, x, y, z, vel))
-    names!(df, [:t, :x, :y, :z, :vx, :vy, :vz]);
+    rename!(df, [:t, :x, :y, :z, :vx, :vy, :vz]);
     return df
 end
 
@@ -73,6 +73,6 @@ function mc_supersonic(num::Int64; tmin=0.0, tmax=5e-6, distance=0.2, z0=0., rev
         vz = - vz
     end
     df = DataFrame(hcat(t, x, y, z, vx, vy, vz))
-    names!(df, [:t, :x, :y, :z, :vx, :vy, :vz]);
+    rename!(df, [:t, :x, :y, :z, :vx, :vy, :vz]);
     return df
 end
